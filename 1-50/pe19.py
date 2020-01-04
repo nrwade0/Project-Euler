@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Tue Oct  8 19:06:18 2019
 
@@ -38,20 +36,6 @@ f_leap = [0, 0+31, 0+31+29, 0+31+29+31, 0+31+29+31+30, 0+31+29+31+30+31, \
 
 
 """
-for i in np.arange(1900, 2000):
-    if(i % 4 == 0): # leap year
-        f = f_leap
-    else:
-        f = f_noleap
-        
-    for j in f:
-        print(it.islice(it.cycle(days), j))
-"""
-
-for item in islice(cycle(days), 0,365):
-    print(item)
-
-"""
 0
 jan 31 \
 feb 28 \
@@ -63,6 +47,6 @@ jul 31 \
 aug 31 \
 sep 30 \
 oct 31 \
-nov 31
+nov 31 \
 dec 31
 """
