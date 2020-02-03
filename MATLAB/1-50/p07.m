@@ -9,39 +9,24 @@
 
 % Nth prime number and max number to test
 N = 10001;
-max_num = 105000;
+max_num = 1e6;
 
-% possible primes array 'p'
-p = 2:max_num;
-
-% start stopwatch and reset flag
+% determines primes up to 'max_num' and saves in 'primes' array
+primes = 2:max_num;
+p = 2;
 tic;
-done = 0;
 
-% test all numbers up to max_num
-for i = 1:max_num    
-    
-    for j = 2:i-1
-        
-        % remove if a number is not a prime
-        if(mod(i,j) == 0)
-            p(p == i) = [];
-            break
-        end
-
-        % flag is toggled when target prime is found
-        if(length(p) <= N)
-            done = 1;
-        end
+% using sieve method
+while (p <= max_num)
+    for i = 2*p:p:max_num
+        primes(i - 1) = 0;
     end
-    
-    % check flag
-    if(done == 1)
-        break
-    end
+    p = p + 1;
 end
 
+primes = primes(primes > 0);
+
 % over 30 secs runtime
-disp(p(N))
+disp(primes(N))
 toc;
 
