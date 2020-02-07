@@ -11,7 +11,7 @@ program PE3
 
   write(*,*) ''
   write(*,*) 'PE3'
-  write(*,*) 'What is the largest prime factor of the number 600851475143 ?'
+  write(*,*) 'What is the largest prime factor of the number 600851475143?'
 
   !  Initialize numbers array to 0, 2, 3, ..., last_number--
   !  Zero instead of 1 because 1 is a special case.
