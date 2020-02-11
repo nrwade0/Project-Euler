@@ -1,5 +1,5 @@
 %{ 
- Project Euler 13 - Largest Collatz sequence
+ Project Euler 14 - Largest Collatz sequence
  
 The following iterative sequence is defined for the set of positive
  integers:
