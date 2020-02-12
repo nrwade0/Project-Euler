@@ -6,8 +6,8 @@
 cd /Users/nick/Documents/GitHub/Project-Euler
 dir
 
-fortran_files = 0;
-matlab_files = 0;
+fortran_files = 1;
+matlab_files = 1;
 python_files = 1;
 
 
@@ -53,7 +53,7 @@ if(python_files == 1)
     cd /Users/nick/Documents/GitHub/Project-Euler/Python
     dir **/*.py
 
-    plot = get_info('.py', '');
+    plot3 = get_info('.py', '');
 
     figure(3)
     map = [0.2 0.1 0.5; 0.9 1 0]; % [incompleted; completed] RGB triplet
@@ -97,7 +97,7 @@ end
 
 
 %{
-plot_data(String, 10x10 matrix, 3x2 array)
+plot_data(String, 10x10 matrix, 3x2 array, 3x1 array)
   plots the data to produce the grid showing problems completed.
 - String 's' is the name of the program used in the title.
 - 10x10 matrix 'm' is the matrix of 1's and 0's that show completed problems.
