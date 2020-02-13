@@ -10,6 +10,8 @@ fortran_files = 1;
 matlab_files = 1;
 python_files = 1;
 
+% figure frame set to max width and half the max height
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 1 0.5]);
 
 
 
@@ -22,7 +24,7 @@ if(fortran_files == 1)
     plot1 = get_info('.f90', '');
 
     % plot data
-    figure(1)
+    subplot(1,3,1)
     map = [0.2 0.1 0.5; 0.9 1 0]; % [incompleted; completed] RGB triplet
     secondary = [1 0.1 0.1]; % red grid color
     plot_data('Fortran', plot1, map, secondary)
@@ -39,7 +41,7 @@ if(matlab_files == 1)
     plot2 = get_info('.m', 'p');
 
     % plot data
-    figure(2)
+    subplot(1,3,2)
     map = [0.2 0.1 0.5; 0.9 1 0]; % [incompleted; completed] RGB triplet
     secondary = [1 0.1 0.1]; % red grid color
     plot_data('MATLAB', plot2, map, secondary)
@@ -55,12 +57,11 @@ if(python_files == 1)
 
     plot3 = get_info('.py', '');
 
-    figure(3)
+    subplot(1,3,3)
     map = [0.2 0.1 0.5; 0.9 1 0]; % [incompleted; completed] RGB triplet
     secondary = [1 0.1 0.1]; % red grid color
     plot_data('Python', plot3, map, secondary)
 end
-
 
 
 
@@ -143,7 +144,7 @@ function plot_data(s, m, map, secondary)
 
     % write title 's' with today's date and remove axes
     title([s ': ' date])
-    axis off
     hold off
+    axis off
 end
 
