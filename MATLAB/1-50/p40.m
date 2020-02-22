@@ -1,0 +1,32 @@
+%{
+  Project Euler problem 40 Champernowne's constant
+   
+    An irrational decimal fraction is created by concatenating the positive
+    integers:
+    0.123456789101112131415161718192021...
+
+    It can be seen that the 12th digit of the fractional part is 1.
+
+    If dn represents the nth digit of the fractional part, find the value
+    of the following expression.
+
+    d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
+%}
+tic;
+
+champ = '';
+max = 1e6;
+
+for i = 1:max
+    champ = strcat(champ, num2str(i));
+    if(length(champ) >= 1000000)
+        disp(i)
+        break
+    end
+end
+
+str2double(champ(1)) * str2double(champ(10)) * str2double(champ(100))* ...
+    str2double(champ(1000)) * str2double(champ(10000))*...
+    str2double(champ(100000)) * str2double(champ(1000000))
+
+toc;
