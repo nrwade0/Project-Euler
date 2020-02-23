@@ -10,6 +10,7 @@
     Find the sum of the digits in the number 100!
 %}
 
+% requires symbolic toolbox to represent factorial(n > 20)
 format long g
 
 n = 100;
