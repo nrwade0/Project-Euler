@@ -65,8 +65,6 @@ end
 
 
 
-
-
 %{
 get_info(String)
   gets information from a folder and produces a 10x10 grid of 1's and 0's 
@@ -147,4 +145,5 @@ function plot_data(s, m, map, secondary)
     hold off
     axis off
 end
+
 
