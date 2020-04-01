@@ -9,7 +9,7 @@ Created on Sun Aug 11 00:08:58 2019
 import numpy as np
 
 
-grid = np.loadtxt('pe11')
+grid = np.loadtxt('data/11')
 
 prod_max = 1
 
