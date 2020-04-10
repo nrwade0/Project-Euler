@@ -4,4 +4,4 @@
 
 ![PROGRESS](progress/disp.jpg)
 
-![TOTALPROGRESS](progress/disp_totals.jpg)
+Total progress per question: ![TOTALPROGRESS](progress/disp_totals.jpg)
