@@ -6,9 +6,11 @@
 cd /Users/nick/Documents/GitHub/Project-Euler
 dir
 
+% choose what to plot
 fortran_files = 1;
 matlab_files = 1;
 python_files = 1;
+one_grid = 1;
 
 % figure frame set to max width and half the max height
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 1 0.5]);
@@ -61,6 +63,27 @@ if(python_files == 1)
     map = [0.2 0.1 0.5; 0.9 1 0]; % [incompleted; completed] RGB triplet
     secondary = [1 0.1 0.1]; % red grid color
     plot_data('Python', plot3, map, secondary)
+end
+
+
+
+if(one_grid == 1)
+    figure(2)
+    % figure frame set to max width and half the max height
+    set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 0.4 0.5]);
+    
+    total_plot = plot1 + plot2 + plot3;
+    
+    map = [0.2  0.1 0.5   % zeros
+           0.9  1.0 0.0   % ones
+           0.95 0.8 0.0  % twos
+           1.0  0.6 0.0]; % threes
+    
+    secondary = [1 0.1 0.1]; % red grid color
+    plot_data('Total Completed', total_plot, map, secondary)
+    c = colorbar;
+    c.Ticks = [0,1,2,3];
+    c.Limits = [-0.1 3.1];
 end
 
 
