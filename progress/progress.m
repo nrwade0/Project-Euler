@@ -5,6 +5,8 @@
 % change to project euler directory
 cd /Users/nick/Documents/GitHub/Project-Euler
 dir
+clc
+clear all
 
 % choose what to plot
 fortran_files = 1;
@@ -20,6 +22,7 @@ set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 1 0.5]);
 if(fortran_files == 1)
     % ----- fortran files ---------
     % set new directory to fortran folder and output all .f90 files
+    fprintf('\n\n ----------- FORTRAN ----------- \n')
     cd /Users/nick/Documents/GitHub/Project-Euler/Fortran
     dir **/*.f90
 
@@ -37,6 +40,7 @@ end
 if(matlab_files == 1)
     % ----- matlab files -----------
     % set new directory to fortran folder and output all .f90 files
+    fprintf('\n\n ----------- MATLAB ----------- \n')
     cd /Users/nick/Documents/GitHub/Project-Euler/MATLAB
     dir **/*.m
 
@@ -54,6 +58,7 @@ end
 if(python_files == 1)
     % ----- python files ------------
     % set new directory to fortran folder and output all .f90 files
+    fprintf('\n\n ----------- PYTHON ----------- \n')
     cd /Users/nick/Documents/GitHub/Project-Euler/Python
     dir **/*.py
 
@@ -100,6 +105,18 @@ function plot = get_info(ext, prefix)
     info = dir(['**/*' ext]);
     names = repmat({'blank'},length(info),1);
     plot = zeros(10);
+    
+    % print progress for the specific program
+    if(isequal(ext,'.f90'))
+        fprintf('1-100 progress made for FORTRAN = %2.1f%%.\n', ...
+        length(info)/100*100)
+    elseif(isequal(ext,'.m'))
+        fprintf('1-100 progress made for MATLAB = %2.1f%%.\n', ...
+        length(info)/100*100)
+    elseif(isequal(ext,'.py'))
+        fprintf('1-100 progress made for PYTHON = %2.1f%%.\n', ...
+        length(info)/100*100)
+    end
 
     % for each file
     for i = 1:length(info)
@@ -122,7 +139,7 @@ end
 plot_data(String, 10x10 matrix, 3x2 array, 3x1 array)
   plots the data to produce the grid showing problems completed.
 - String 's' is the name of the program used in the title.
-- 10x10 matrix 'm' is the matrix of 1's and 0's that show completed problems.
+- 10x10 matrix 'm' is the matrix of 1s and 0s that show completed problems.
 - 2x3 array 'map' defines RGB triplet used as color schemes
 - 1x3 array 'secondary' defines RGB triplet used as number and grid color
 %}
