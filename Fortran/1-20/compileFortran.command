@@ -1,3 +1,4 @@
 #!/bin/bash
-cd ~/Documents/GitHub/Project-Euler/1-50
-gfortran -o 3 pe3.f90
+cd ~/Documents/GitHub/Project-Euler/Fortran/1-20
+gfortran -o lol pe07.f90
+open lol
