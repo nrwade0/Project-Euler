@@ -10,21 +10,25 @@
      include leading zeros.)
 %}
 
+% takes about 22 seconds to run.
+% intilialize running sum and start timer
 tic
-s1 = num2str(585);
-s2 = dec2bin(585);
-check_pal(s1,s2)
+running_total = 0;
 
-su = 0;
+% convert each number i up to 1e6 to strings in decimal and binary and
+% check if they are both palindromes thru check_pal()
 for i = 1:1e6
     s1 = num2str(i);
     s2 = dec2bin(i);
     if(check_pal(s1, s2) == 1)
-        su = su + i;
+        running_total = running_total + i;
     end
 end
-su
+
+% print answer
+fprintf('Sum of palindromic (in base 10 and 2) numbers = %d.\n',running_total)
 toc
+
 
 % function determines if both strings are palindromes
 function y = check_pal(str1, str2)
