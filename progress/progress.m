@@ -3,16 +3,16 @@
 % 
 
 % change to project euler directory
-cd /Users/nick/Documents/GitHub/Project-Euler
+cd /Users/nick/Documents/MATLAB
 dir
 clc
 clear all
 
 % choose what to plot
-fortran_files = 1;
+fortran_files = 0;
 matlab_files = 1;
-python_files = 1;
-one_grid = 1;
+python_files = 0;
+one_grid = 0;
 
 % figure frame set to max width and half the max height
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 1 0.5]);
@@ -41,7 +41,7 @@ if(matlab_files == 1)
     % ----- matlab files -----------
     % set new directory to fortran folder and output all .f90 files
     fprintf('\n\n ----------- MATLAB ----------- \n')
-    cd /Users/nick/Documents/GitHub/Project-Euler/MATLAB
+    cd /Users/nick/Documents/MATLAB
     dir **/*.m
 
     plot2 = get_info('.m', 'p');
