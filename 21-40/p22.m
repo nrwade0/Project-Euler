@@ -14,11 +14,12 @@
     What is the total of all the name scores in the file?
 %}
 
+% Takes <1 seconds
 tic
 
 % input list of names separated by a comma 
-cd /Users/nick/Documents/GitHub/Project-Euler/MATLAB/1-50
-f = fopen('data/p22_names.txt','r');
+cd /Users/nick/Documents/MATLAB/data
+f = fopen('p22_names.txt','r');
 names = textscan(f,'%q', 'Delimiter',',', 'CollectOutput',true);
 fclose(f);
 
@@ -40,5 +41,5 @@ for i = 1:len
     name_score(i,1) = sum(vals-64)*i;
 end
 
-
-fprintf('Sum of name scores = %d \n', sum(name_score(:,1)))
+fprintf('Sum of name scores = %d.\n', sum(name_score(:,1)))
+toc

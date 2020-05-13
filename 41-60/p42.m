@@ -27,8 +27,8 @@ for n = 1:200
 end
 
 % scan data document for words, using comma delimiter, then close file
-cd /Users/nick/Documents/GitHub/Project-Euler/MATLAB/1-50
-f = fopen('data/p42_words.txt','r');
+cd /Users/nick/Documents/MATLAB/data
+f = fopen('p42_words.txt','r');
 words = textscan(f,'%q', 'Delimiter',',', 'CollectOutput',true);
 fclose(f);
 

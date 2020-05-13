@@ -15,7 +15,7 @@ NOTE: This is a much more difficult version of Problem 18. It is not
 tic
 
 % input text file triangle and save into 1x5050 array
-cd /Users/nick/Documents/GitHub/Project-Euler/MATLAB/51-100/data
+cd /Users/nick/Documents/MATLAB/data
 f = fopen('p67_triangle.txt','r');
 tt = fscanf(f, '%d');
 fclose(f);

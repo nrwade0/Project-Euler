@@ -21,7 +21,7 @@ tic
 count_89s = 0;
 
 % load pre-saved array of chains to 1 or 89 below max sqsum (9^2*7 = 567)
-cd /Users/nick/Documents/GitHub/Project-Euler/MATLAB/51-100/data
+cd /Users/nick/Documents/MATLAB/data
 load('p92_chains','chains')
 
 for i = 1:1e7

@@ -34,8 +34,8 @@
 
 % open romans file location
 tic
-cd /Users/nick/Documents/GitHub/Project-Euler/MATLAB/51-100
-f = fopen('data/p89_roman.txt','r');
+cd /Users/nick/Documents/MATLAB/data
+f = fopen('p89_roman.txt','r');
 romans = textscan(f,'%s', 'Delimiter','\n');
 fclose(f);
 
