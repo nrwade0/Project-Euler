@@ -2,94 +2,23 @@
 % Graphically show progress for Project Euler problems
 % 
 
-% change to project euler directory
+% change to MATLAB Drive directory
 cd /Users/nick/Documents/MATLAB
-dir
 clc
 clear all
 
-% choose what to plot
-fortran_files = 0;
-matlab_files = 1;
-python_files = 0;
-one_grid = 0;
 
-% figure frame set to max width and half the max height
-set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 1 0.5]);
+% ----- MATLAB files -----------
+% set new directory to MATLAB folder and output all .m files
+fprintf('\n ----------- MATLAB ----------- \n')
+dir **/*.m
 
+plot1 = get_info('.m', 'p');
 
-
-if(fortran_files == 1)
-    % ----- fortran files ---------
-    % set new directory to fortran folder and output all .f90 files
-    fprintf('\n\n ----------- FORTRAN ----------- \n')
-    cd /Users/nick/Documents/GitHub/Project-Euler/Fortran
-    dir **/*.f90
-
-    plot1 = get_info('.f90', '');
-
-    % plot data
-    subplot(1,3,1)
-    map = [0.2 0.1 0.5; 0.9 1 0]; % [incompleted; completed] RGB triplet
-    secondary = [1 0.1 0.1]; % red grid color
-    plot_data('Fortran', plot1, map, secondary)
-end
-
-
-
-if(matlab_files == 1)
-    % ----- matlab files -----------
-    % set new directory to fortran folder and output all .f90 files
-    fprintf('\n\n ----------- MATLAB ----------- \n')
-    cd /Users/nick/Documents/MATLAB
-    dir **/*.m
-
-    plot2 = get_info('.m', 'p');
-
-    % plot data
-    subplot(1,3,2)
-    map = [0.2 0.1 0.5; 0.9 1 0]; % [incompleted; completed] RGB triplet
-    secondary = [1 0.1 0.1]; % red grid color
-    plot_data('MATLAB', plot2, map, secondary)
-end
-
-
-
-if(python_files == 1)
-    % ----- python files ------------
-    % set new directory to fortran folder and output all .f90 files
-    fprintf('\n\n ----------- PYTHON ----------- \n')
-    cd /Users/nick/Documents/GitHub/Project-Euler/Python
-    dir **/*.py
-
-    plot3 = get_info('.py', '');
-
-    subplot(1,3,3)
-    map = [0.2 0.1 0.5; 0.9 1 0]; % [incompleted; completed] RGB triplet
-    secondary = [1 0.1 0.1]; % red grid color
-    plot_data('Python', plot3, map, secondary)
-end
-
-
-
-if(one_grid == 1)
-    figure(2)
-    % figure frame set to max width and half the max height
-    set(gcf, 'Units', 'Normalized', 'OuterPosition', [0 0 0.4 0.5]);
-    
-    total_plot = plot1 + plot2 + plot3;
-    
-    map = [0.2  0.1 0.5   % zeros
-           0.9  1.0 0.0   % ones
-           0.95 0.8 0.0  % twos
-           1.0  0.6 0.0]; % threes
-    
-    secondary = [1 0.1 0.1]; % red grid color
-    plot_data('Total Completed', total_plot, map, secondary)
-    c = colorbar;
-    c.Ticks = [0,1,2,3];
-    c.Limits = [-0.1 3.1];
-end
+% plot data
+map = [0.2 0.1 0.5; 0.9 1 0]; % [incompleted; completed] RGB triplet
+secondary = [1 0.1 0.1]; % red grid color
+plot_data('Project Euler Progress', plot1, map, secondary)
 
 
 
@@ -105,18 +34,6 @@ function plot = get_info(ext, prefix)
     info = dir(['**/*' ext]);
     names = repmat({'blank'},length(info),1);
     plot = zeros(10);
-    
-    % print progress for the specific program
-    if(isequal(ext,'.f90'))
-        fprintf('1-100 progress made for FORTRAN = %2.1f%%.\n', ...
-        length(info)/100*100)
-    elseif(isequal(ext,'.m'))
-        fprintf('1-100 progress made for MATLAB = %2.1f%%.\n', ...
-        length(info)/100*100)
-    elseif(isequal(ext,'.py'))
-        fprintf('1-100 progress made for PYTHON = %2.1f%%.\n', ...
-        length(info)/100*100)
-    end
 
     % for each file
     for i = 1:length(info)
@@ -132,7 +49,11 @@ function plot = get_info(ext, prefix)
         % place a 1 in plotting matrix on that file
         plot(str2num(names{i})) = 1;
     end
+    
+    % tranpose for drawing
+    plot = transpose(plot);
 end
+
 
 
 %{
@@ -152,8 +73,8 @@ function plot_data(s, m, map, secondary)
     
     % draw boxes and numbers on the grid
     hold on
-    for tx = 1:10:100    % x value, bottom axis, 1-100 by 10's for numbers
-        for ty = 1:10    % y value, left axis
+    for ty = 1:10:100    % x value, bottom axis, 1-100 by 10's for numbers
+        for tx = 1:10    % y value, left axis
 
             %  (x1,y2)----(x2,y2)
             %  |                |
@@ -161,10 +82,10 @@ function plot_data(s, m, map, secondary)
             %  |                |
             %  (x1,y1)----(x2,y1)
             % best offsets determined by trial and error
-            x1 = tx/10 - 1.6;
-            x2 = tx/10 + 1.4;
-            y1 = ty - 0.5;
-            y2 = ty + 0.5;
+            x1 = tx - 1.5;
+            x2 = tx + 1.5;
+            y1 = ty/10 - 1.6;
+            y2 = ty/10 + 1.4;
             
             % five lines to connect four points
             x = [x1, x2, x2, x1, x1];
@@ -175,7 +96,7 @@ function plot_data(s, m, map, secondary)
 
             % evaluate and write number in box in 'secondary' color
             str = num2str(tx + ty - 1);
-            t = text(tx/10 + 0.75, ty, str);
+            t = text(tx-0.15, ty/10 + 0.85, str);
             t.Color = secondary;
         end
     end
