@@ -6,3 +6,7 @@ Also using `Symbolic Math Toolbox` to solve some high memory problems.
 
 
 ![MATLAB progress](progress/disp.jpg)
+
+
+
+![1-20 progress](progress/runtimes1-20.png)
