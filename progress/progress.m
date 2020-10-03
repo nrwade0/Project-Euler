@@ -3,7 +3,7 @@
 % 
 
 % change to MATLAB Drive directory
-cd /Users/nick/Documents/MATLAB
+cd /Users/nick/Documents/GitHub/Project-Euler
 clc
 clear all
 
