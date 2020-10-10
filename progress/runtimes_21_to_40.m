@@ -1,10 +1,14 @@
-cd /Users/nick/Documents/GitHub/Project-Euler/1-20
+% 
+% Get runtimes for 21-40
+% 
+
+cd /Users/nick/Documents/GitHub/Project-Euler/21-40
 
 clc 
 clear all
 
 
-% ----- get 1-20 files -----------
+% ----- get files -----------
 % set new directory to MATLAB folder and output all .m files
 fprintf('\n ----------- MATLAB ----------- \n')
 dir **/*.m %print their names
@@ -20,7 +24,9 @@ plot = zeros(1,20);
 
 % for each file
 for var = 1:length(info)
-
+    
+    cd /Users/nick/Documents/GitHub/Project-Euler/21-40
+    
     % save each name and place in names without 'ext'
     temp = info(var).name;
     % remove prefix if it exists (most likely 'p' in matlab)
@@ -30,12 +36,20 @@ for var = 1:length(info)
     names{var} = erase(temp, ext);
     
     tic
-    fprintf('  Now timing: %s ', [prefix names{var} ext])
-    dead = evalc(['run(''' [prefix names{var} ext] ''')']);
-    clearvars -except prefix ext info names plot var temp
-    t = toc;
-    fprintf('  ... %f seconds \n', t)
-    plot(str2num(names{var})) = t;
+    file_name = [prefix names{var} ext];
+    fprintf('  Now timing: %s ', file_name)
+    
+    if isfile(file_name) % File exists.
+        dead = evalc(['run(''' file_name ''')']);
+        clearvars -except prefix ext info names plot var temp
+        t = toc;
+        fprintf('  ...  %f seconds \n', t)
+        plot(var) = t;
+        
+    else % File does not exist.
+        fprintf('  ...  It does not exist \n')
+        plot(var) = 0;
+    end    
     
 end
 
@@ -47,7 +61,7 @@ plot = transpose(plot);
 
 % plot using a bar graph
 bar(plot)
-title(['p1-20.m: ' date])
+title(['p21-40.m: ' date])
 xlabel('Problem number')
 xticks(1:20)
 %xticklabels({'1','-2\pi','-\pi','0','\pi','2\pi','3\pi'})
