@@ -70,7 +70,7 @@ for num = 1:len
     
     % helps keep track of where the program is at. delete for performance
     if(rem(num,500) == 0)
-        fprintf('Current num = %d', num)
+        fprintf('Current num = %d\n', num)
     end
     
     % sum all pairs of abundant numbers to a current abundant number 'num'
